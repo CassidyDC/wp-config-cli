@@ -56,19 +56,19 @@ ${chalk.bold('Usage:')}
   ${chalk.green('npx wp-config')} ${chalk.yellow('[--option]')} ${chalk.cyan('<command>')}
 
 ${chalk.bold('Options:')}
-  ${chalk.yellow('-h')}, ${chalk.yellow('--help')}      Print this help message
-  ${chalk.yellow('-v')}, ${chalk.yellow('--version')}   Print the wp-config version
-  ${chalk.yellow('--clear')}         Clear the console before running the command ${chalk.dim('(default: true)')}
-  ${chalk.yellow('--no-clear')}      Don't clear the console before running the command
+  ${chalk.yellow('-h')}, ${chalk.yellow('--help')}        Print this help message
+  ${chalk.yellow('-n')}, ${chalk.yellow('--no-clear')}    Don't clear the console when running a command
+  ${chalk.yellow('-v')}, ${chalk.yellow('--version')}     Print the wp-config version
 
 ${chalk.bold('Commands:')}
-  ${chalk.cyan('help')}            Print this help message
-  ${chalk.cyan('i')}, ${chalk.cyan('install')}      Install the configurations files with default settings.
-  ${chalk.cyan('l')}, ${chalk.cyan('launch')}       Launch the configuration wizard to customize settings.
+  ${chalk.cyan('i')}, ${chalk.cyan('install')}        Install the configuration files with default settings.
+  ${chalk.cyan('l')}, ${chalk.cyan('launch')}         Launch the configuration wizard to customize settings.
+  ${chalk.cyan('help')}              Print this help message
 
 ${chalk.bold('Examples:')}
   ${chalk.green('npx wp-config')} ${chalk.cyan('i')}   Runs the default installation process
-  ${chalk.green('npx wp-config')} ${chalk.yellow('-v')}  Prints the wp-config version`;
+  ${chalk.green('npx wp-config')} ${chalk.yellow('-v')}  Prints the wp-config version
+`;
 
 export const cli = {
   description,
