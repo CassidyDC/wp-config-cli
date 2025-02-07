@@ -1,0 +1,49 @@
+{
+  "name": "wp-config",
+  "version": "1.0.0",
+  "description": "A simple CLI for adding development configuration files to a WordPress project.",
+  "author": {
+    "name": "Jacob Cassidy",
+    "email": "hello@cassidydc.com",
+    "url": "https://cassidydc.com"
+  },
+  "bin": {
+    "wp-config": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "commands",
+    "utils"
+  ],
+  "main": "index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cassidydc/wp-dev-configs-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/cassidydc/wp-dev-configs-cli/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "CassidyDC",
+    "WordPress development",
+    "Jacob Cassidy",
+    "WordPress"
+  ],
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "cli-welcome": "^3.0.1",
+    "figures": "^6.1.0",
+    "meow": "^13.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.19.0",
+    "prettier": "^3.4.2"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "node test.js"
+  }
+}
