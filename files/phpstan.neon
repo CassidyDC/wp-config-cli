@@ -1,0 +1,13 @@
+parameters:
+	level: 6
+	paths:
+		- .
+	excludePaths:
+		analyse:
+			- .dev-assets/phpstan (?)
+			- node_modules (?)
+			- vendor (?)
+			# UNCOMMENT BELOW TO EXCLUDE WORDPRESS CORE FILES
+			# - wp-*
+			# - index.php
+			# - xmlrpc.php

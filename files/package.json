@@ -1,0 +1,45 @@
+{
+	"name": "wp-dev-config-files",
+	"version": "1.2.1",
+	"description": "Development configuration files optimized for WordPress Block Theme development",
+	"author": "Jacob Cassidy",
+	"homepage": "https://cassidydc.com",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jacobcassidy/wp-dev-config-files"
+	},
+	"bugs": {
+		"url": "https://github.com/jacobcassidy/wp-dev-config-files/issues"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.19.0",
+		"@wordpress/scripts": "^30.10.0",
+		"copy-webpack-plugin": "^12.0.2",
+		"eslint-plugin-jest": "^28.11.0",
+		"eslint-plugin-react-hooks": "^5.1.0",
+		"eslint": "^9.19.0",
+		"fast-glob": "^3.3.3",
+		"globals": "^15.14.0",
+		"patch-package": "^8.0.0",
+		"prettier": "npm:wp-prettier@^3.0.3",
+		"stylelint-config-cssmodules-order": "^1.1.1",
+		"stylelint-declaration-block-no-ignored-properties": "^2.8.0",
+		"stylelint-high-performance-animation": "^1.10.0",
+		"stylelint-plugin-logical-css": "^1.2.1",
+		"stylelint-use-nesting": "^6.0.0",
+		"stylelint": "^16.14.1",
+		"typescript-eslint": "^8.22.0",
+		"webpack-remove-empty-scripts": "^1.0.4"
+	},
+	"scripts": {
+		"postinstall": "patch-package",
+		"start": "wp-scripts start",
+		"build": "wp-scripts build",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"lint:md:docs": "wp-scripts lint-md-docs",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"packages-update": "wp-scripts packages-update"
+	}
+}
