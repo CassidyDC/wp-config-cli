@@ -3,37 +3,54 @@
  */
 
 import chalk from 'chalk';
-import meow from 'meow';
 
 import { label } from './styles.js';
+import { pkgJSON } from './constants.js';
 
-const options = {
-  importMeta: import.meta,
-  description: false,
-  input: ['install', 'launch'],
-  flags: {
-    clear: {
-      type: 'boolean',
-      default: true,
-      shortFlag: 'c',
-    },
-    debug: {
-      type: 'boolean',
-      shortFlag: 'd',
-    },
-    help: {
-      type: 'boolean',
-      shortFlag: 'h',
-    },
-    version: {
-      type: 'boolean',
-      shortFlag: 'v',
-    },
+const { description, version } = pkgJSON;
+
+const commands = {
+  help: {
+    exec: '',
+  },
+  install: {
+    alias: 'i',
+    exec: '',
+  },
+  launch: {
+    alias: 'l',
+    exec: '',
   },
 };
 
-const helpText = `
-${label.info(` Help `)}
+const flags = {
+  'no-clear': {
+    alias: 'n',
+  },
+  debug: {
+    alias: 'd',
+  },
+  help: {
+    alias: 'h',
+  },
+  version: {
+    alias: 'v',
+  },
+};
+
+const allowedFlags = () => {
+  const longFlags = Object.keys(flags).filter(Boolean);
+  const shortFlags = longFlags.map((flag) => flags[flag].alias).filter(Boolean);
+  return [...longFlags, ...shortFlags];
+};
+
+const allowedCommands = () => {
+  const longCommands = Object.keys(commands).filter(Boolean);
+  const shortCommands = longCommands.map((command) => commands[command].alias).filter(Boolean);
+  return [...longCommands, ...shortCommands];
+};
+
+const helpText = `${label.heading(` Help `)}
 
 ${chalk.bold('Usage:')}
   ${chalk.green('npx wp-config')} ${chalk.yellow('[--option]')} ${chalk.cyan('<command>')}
@@ -51,7 +68,14 @@ ${chalk.bold('Commands:')}
 
 ${chalk.bold('Examples:')}
   ${chalk.green('npx wp-config')} ${chalk.cyan('i')}   Runs the default installation process
-  ${chalk.green('npx wp-config')} ${chalk.yellow('-v')}  Prints the wp-config version
-`;
+  ${chalk.green('npx wp-config')} ${chalk.yellow('-v')}  Prints the wp-config version`;
 
-export const cli = meow(helpText, options);
+export const cli = {
+  description,
+  version,
+  commands,
+  flags,
+  allowedCommands: allowedCommands(),
+  allowedFlags: allowedFlags(),
+  helpText,
+};
