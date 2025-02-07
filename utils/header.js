@@ -10,7 +10,6 @@ import { pkgJSON } from './constants.js';
 import { clearConsole, log } from './functions.js';
 import { color, customColor, label, symbol } from './styles.js';
 
-// CLI Header
 export const header = (clear) => {
   clear = clear ?? true;
 
@@ -26,12 +25,12 @@ export const header = (clear) => {
   const boxenOptions = {
     borderColor: customColor.purple,
     borderStyle: 'round',
-    margin: 1,
+    margin: { top: 1 },
     padding: 1,
     title: name,
     titleAlignment: 'center',
     textAlignment: 'center',
   };
 
-  log(boxen(boxenText, boxenOptions));
+  return boxen(boxenText, boxenOptions);
 };
