@@ -24,14 +24,17 @@ const commands = {
 };
 
 const flags = {
-  'no-clear': {
-    alias: 'n',
-  },
   debug: {
     alias: 'd',
   },
   help: {
     alias: 'h',
+  },
+  'no-clear': {
+    alias: 'nc',
+  },
+  'no-header': {
+    alias: 'nh',
   },
   version: {
     alias: 'v',
@@ -56,9 +59,11 @@ ${chalk.bold('Usage:')}
   ${chalk.green('npx wp-config')} ${chalk.yellow('[--option]')} ${chalk.cyan('<command>')}
 
 ${chalk.bold('Options:')}
-  ${chalk.yellow('-h')}, ${chalk.yellow('--help')}        Print this help message
-  ${chalk.yellow('-n')}, ${chalk.yellow('--no-clear')}    Don't clear the console when running a command
-  ${chalk.yellow('-v')}, ${chalk.yellow('--version')}     Print the wp-config version
+  ${chalk.yellow('-d')},  ${chalk.yellow('--debug')}      Print CLI debug info
+  ${chalk.yellow('-h')},  ${chalk.yellow('--help')}       Print this help message
+  ${chalk.yellow('-nc')}, ${chalk.yellow('--no-clear')}   Don't clear the console when running a command
+  ${chalk.yellow('-nh')}, ${chalk.yellow('--no-header')}  Don't print the CLI header when running a command
+  ${chalk.yellow('-v')},  ${chalk.yellow('--version')}    Print the CLI version
 
 ${chalk.bold('Commands:')}
   ${chalk.cyan('i')}, ${chalk.cyan('install')}        Install the configuration files with default settings.
@@ -67,7 +72,7 @@ ${chalk.bold('Commands:')}
 
 ${chalk.bold('Examples:')}
   ${chalk.green('npx wp-config')} ${chalk.cyan('i')}   Runs the default installation process
-  ${chalk.green('npx wp-config')} ${chalk.yellow('-v')}  Prints the wp-config version
+  ${chalk.green('npx wp-config')} ${chalk.yellow('-v')}  Prints the CLI version
 `;
 
 export const cli = {
