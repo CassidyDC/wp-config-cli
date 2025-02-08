@@ -2,21 +2,22 @@
  * @module utils/alerts
  */
 
-import { log } from "./constants.js";
-import { color, label, symbol } from "./styles.js";
+import { log } from './functions.js';
+import { color, label, symbol } from './styles.js';
 
 /**
- * Display an alert message in the console.
+ * Prints an alert message in the console.
  *
- * @param {string} type - The type of alert to display [error, info, note, success, warning].
- * @param {string} msg - The message to display.
- * @param {string} title - The title of the alert message (defaults to type name).
+ * @param {string} type - The type of alert to print.
+ * @param {string} msg - The message to print.
+ * @param {string} title - The title to print (default: [type]).
+ * @return {void}
  */
-export function alert(type, msg, title = "") {
-  const types = ["error", "info", "note", "success", "warning"];
+export function alert(type, msg, title = '') {
+  const types = Object.keys(label);
 
   if (!types.includes(type)) {
-    throw new Error("Invalid alert type.");
+    throw new Error('Invalid alert type.');
   }
 
   const icon = symbol[type];
