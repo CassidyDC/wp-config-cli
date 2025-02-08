@@ -66,4 +66,5 @@ export function processArgs() {
   }
 
   alert('warning', 'Process not caught by any condition.');
+  process.exit(1);
 }
