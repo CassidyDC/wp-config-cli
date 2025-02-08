@@ -12,7 +12,7 @@
   },
   "files": [
     "index.js",
-    "commands",
+    "exec",
     "utils"
   ],
   "main": "index.js",
@@ -32,10 +32,9 @@
     "WordPress"
   ],
   "dependencies": {
+    "boxen": "^8.0.1",
     "chalk": "^5.4.1",
-    "cli-welcome": "^3.0.1",
-    "figures": "^6.1.0",
-    "meow": "^13.2.0"
+    "figures": "^6.1.0"
   },
   "devDependencies": {
     "eslint": "^9.19.0",
