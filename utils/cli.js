@@ -2,7 +2,7 @@
  * @module utils/cli
  */
 
-import { execDebug, execHelp, execInstall, execLaunch, execVersion } from '../exec/index.js';
+import { execDebug, execHelp, execInstall, execLaunch, execRawVersion, execVersion } from '../exec/index.js';
 import { pkgJSON } from './constants.js';
 import { label, s } from './styles.js';
 
@@ -41,6 +41,10 @@ const flags = {
     alias: 'nh',
     exec: null,
     dep: true,
+  },
+  'raw-version': {
+    alias: null,
+    exec: execRawVersion,
   },
   version: {
     alias: 'v',
@@ -89,7 +93,8 @@ const helpText = `  ${s.bold('Usage:')}
     ${s.yellow('-h')},  ${s.yellow('--help')}       Print this help message
     ${s.yellow('-nc')}, ${s.yellow('--no-clear')}   Don't clear the console when running a command ${s.dim('(dep flag)')}
     ${s.yellow('-nh')}, ${s.yellow('--no-header')}  Don't print the CLI header when running a command ${s.dim('(dep flag)')}
-    ${s.yellow('-v')},  ${s.yellow('--version')}    Print the CLI version
+    ${s.yellow('-v')},  ${s.yellow('--version')}    Print the CLI version ${s.dim('(styled)')}
+    ${s.yellow('--raw-version')}     Print the CLI version ${s.dim('(plain text)')}
 
   ${s.bold('Commands:')}
     ${s.cyan('i')}, ${s.cyan('install')}        Install the configuration files with default settings.
