@@ -2,15 +2,17 @@
  * @module exec/debug
  */
 
-import { argv, clearConsole, cli, color, label, log, printHeader } from '../utils/index.js';
+import { alert, argv, clearConsole, cli, label, log, printHeader } from '../utils/index.js';
 
+/**
+ * Prints debug information to the console.
+ *
+ * @return {void}
+ */
 export function execDebug() {
-  const title = label.heading(' CLI DEBUG INFO ');
-  const subtext = color.heading('This information is for CLI debugging purposes.');
-
   clearConsole();
   printHeader();
-  log(`\n${title} ${subtext}\n`);
+  alert('heading', 'This information is for CLI debugging purposes.', 'CLI Debug Info');
   log(label.info(' INPUT '), argv, '\n');
   log(label.info(' CLI '), cli, '\n');
 }
