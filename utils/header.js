@@ -4,7 +4,6 @@
 
 // External dependencies.
 import boxen from 'boxen';
-
 import figures from 'figures';
 
 // Internal dependencies.
