@@ -4,12 +4,11 @@
 
 // External dependencies.
 import boxen from 'boxen';
-import figures from 'figures';
 
 // Internal dependencies.
 import { inputFlags, pkgJSON } from './constants.js';
 import { log } from './functions.js';
-import { color, customColor, label, symbol } from './styles.js';
+import { color, customColor, figure, label } from './styles.js';
 
 /**
  * Prints the CLI header unless the `--no-header` or `-nh` flag is provided.
@@ -26,7 +25,8 @@ export function printHeader() {
   const author = pkgJSON.author.name;
   const url = pkgJSON.author.url;
 
-  const boxenText = `${description}\n${color.heading.dim(`Version ${version} ${figures.star} by ${author} ${figures.star} ${url}`)}`;
+  const boxenText = `${description}\n${color.heading.dim(`Version ${version} ${figure.note} by ${author} ${figure.note} ${url}`)}`;
+
   const boxenOptions = {
     borderColor: customColor.purple,
     borderStyle: 'round',
