@@ -29,12 +29,9 @@ import { alert, argv, cli, inputCommands, inputFlags, s } from './utils/index.js
   errorMultiCommands();
   errorUnknownCommand();
   errorUnknownFlag();
-  runCommand();
+  await runCommand();
   runFlag();
-
-  // Print a warning and exit if no process conditions are met.
-  alert('warning', 'Process not caught by any condition.');
-  process.exit(1);
+  notCaught();
 
   /**
    * Prints debug information if a debug flag is provided.
@@ -113,20 +110,17 @@ import { alert, argv, cli, inputCommands, inputFlags, s } from './utils/index.js
   /**
    * Runs a single valid command if provided.
    */
-  function runCommand() {
+  async function runCommand() {
     if (inputCommands.length === 1 && allowedCommands.includes(inputCommands[0])) {
-      const cmd = commands[inputCommands[0]];
+      let cmd = commands[inputCommands[0]];
 
-      if (cmd) {
-        cmd.exec();
-      } else {
-        // Get command by alias.
-        Object.keys(commands).forEach((command) => {
-          if (commands[command].alias === inputCommands[0]) {
-            commands[command].exec();
-          }
-        });
+      // Get command by alias.
+      if (!cmd) {
+        const cmdKey = Object.keys(commands).find((command) => commands[command].alias === inputCommands[0]);
+        cmd = commands[cmdKey];
       }
+
+      await cmd.exec();
       process.exit(0);
     }
   }
@@ -153,4 +147,14 @@ import { alert, argv, cli, inputCommands, inputFlags, s } from './utils/index.js
       });
     }
   }
+
+  /**
+   * Prints a warning and exits if no process conditions are met.
+   */
+  function notCaught() {
+    alert('warning', 'Process not caught by any condition.');
+    process.exit(1);
+  }
+
+  alert('error', 'END OF THE UNIVERSE.');
 })();
