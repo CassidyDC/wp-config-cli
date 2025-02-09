@@ -3,7 +3,7 @@
  */
 
 import { log } from './functions.js';
-import { color, label, symbol } from './styles.js';
+import { color, label, icon } from './styles.js';
 
 /**
  * Prints an alert message in the console.
@@ -20,12 +20,10 @@ export function alert(type, msg, title = '') {
     throw new Error('Invalid alert type.');
   }
 
-  const icon = symbol[type];
-
   title = title ? title.toUpperCase() : type.toUpperCase();
-  title = label[type](` ${title} `);
+  title = label[type].bold(` ${title} `);
 
   msg = color[type](msg);
 
-  log(`\n${icon} ${title} ${msg}\n`);
+  log(`\n${icon[type]} ${title} ${msg}\n`);
 }
