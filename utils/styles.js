@@ -5,14 +5,14 @@
 import chalk from 'chalk';
 import figures from 'figures';
 
-export const s = chalk;
+const s = chalk;
 
-export const customColor = {
+const customColor = {
   orange: '#ffa500',
   purple: '#bd84d7',
 };
 
-export const color = {
+const color = {
   error: s.red,
   heading: s.hex(customColor.purple),
   info: s.blue,
@@ -21,20 +21,44 @@ export const color = {
   warning: s.hex(customColor.orange),
 };
 
-export const label = {
-  error: color.error.inverse.bold,
-  heading: color.heading.inverse.bold,
-  info: color.info.inverse,
-  note: color.note.inverse,
-  success: color.success.inverse,
-  warning: color.warning.inverse,
+const figure = {
+  error: figures.cross,
+  heading: figures.nodejs,
+  info: figures.info,
+  note: figures.star,
+  success: figures.tick,
+  warning: figures.warning,
 };
 
-export const symbol = {
-  error: color.error(figures.cross),
-  heading: color.heading(figures.nodejs),
-  info: color.info(figures.info),
-  note: color.note(figures.star),
-  success: color.success(figures.tick),
-  warning: color.warning(figures.warning),
-};
+const label = createLabels();
+
+const icon = createIcons();
+
+/**
+ * Creates label styles from each color key.
+ */
+function createLabels() {
+  const labels = {};
+
+  Object.keys(color).forEach((key) => {
+    labels[key] = color[key].inverse;
+  });
+
+  return labels;
+}
+
+/**
+ * Creates icon styles from each matching color and figure key.
+ */
+function createIcons() {
+  const icons = {};
+  const matchingKeys = Object.keys(color).filter((key) => figure.hasOwnProperty(key));
+
+  matchingKeys.forEach((key) => {
+    icons[key] = color[key](figure[key]);
+  });
+
+  return icons;
+}
+
+export { color, customColor, figure, icon, label, s };
